@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أختي الغالية - Rasha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- شاشة السؤال التفاعلي الأولى -->
+    <div id="question-screen" class="card">
+        <h1 class="title">Rasha ❤️</h1>
+        <p class="question-text">هل تحبين أخاكِ المدلل؟</p>
+        
+        <div class="buttons-container">
+            <button id="yes-btn" onclick="sayYes()">نعم بالتأكيد 🥰</button>
+            <button id="no-btn" onmouseover="moveNoButton()" onclick="sayNo()">لا 😜</button>
+        </div>
+        <p id="funny-msg" class="funny-msg"></p>
+    </div>
+
+    <!-- شاشة الهدية والصور (تكون مخفية حتى تختار نعم) -->
+    <div id="love-screen" class="card hidden">
+        <h1 class="title">Rasha ❤️</h1>
+        <p class="subtitle">Mi querida hermana</p>
+
+        <!-- صندوق الصور اللطيفة -->
+        <div class="photos-container">
+            <div class="photo-frame">
+                <img src="rasha-1.jpeg" alt="Rasha photo 1">
+            </div>
+            <div class="photo-frame">
+                <img src="rasha-2.jpeg" alt="Rasha photo 2">
+            </div>
+        </div>
+
+        <!-- الجملة الإسبانية -->
+        <div class="quote-box">
+            <p class="es-text">"Mi querida hermana Rasha, eres mi refugio seguro y el regalo más hermoso de la vida."</p>
+            <p class="ar-translation">أختي الغالية رشا، أنتِ ملجئي الآمن وأجمل هدية في الحياة.</p>
+        </div>
+    </div>
+
+    <div class="lights"></div>
+
+    <!-- كود الجافاسكريبت للتحكم بالتفاعل -->
+    <script>
+        function sayYes() {
+            document.getElementById('question-screen').style.display = 'none';
+            document.getElementById('love-screen').classList.remove('hidden');
+        }
+
+        function sayNo() {
+            const msg = document.getElementById('funny-msg');
+            // جملة بالاسبانية تعني: "أعلم أنكِ تمزحين، أعيدي المحاولة!"
+            msg.innerHTML = "¡Sé que estás bromeando! Inténtalo de nuevo. 😌";
+        }
+
+        // حركة تفاعلية لطيفة لجعل زر "لا" يهرب قليلاً أو يمزح معها
+        function moveNoButton() {
+            const noBtn = document.getElementById('no-btn');
+            const x = Math.random() * 100 - 50;
+            const y = Math.random() * 50 - 25;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+    </script>
+</body>
+</html>
